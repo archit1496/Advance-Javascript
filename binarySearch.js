@@ -1,5 +1,4 @@
 function binarySearch(array,target){
-    debugger
     let start=0;
     let end=array.length-1;
     let mid=Math.floor((end-start)/2)

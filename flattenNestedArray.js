@@ -1,24 +1,23 @@
-function flattenNestedArray(array){
-    if (array.length <= 0 || array == null)
-        return array;
-    const newArray=[];
-    flatten(array,newArray);
-    return newArray;
-}
-
-function flatten(array,newArray){
+function flatten(array)
+{
+    let newArray=[];
    
-    for(let x=0;x<array.length;x++)
+    function flattenArray(array,newArray)
     {
-        if(Array.isArray(array[x]))
+        for(let x=0;x<array.length;x++)
         {
-              flatten(array[x],newArray)
+            if(Array.isArray(array[x]))
+            {
+                flattenArray(array[x],newArray)
+            }
+            else{
+                newArray.push(array[x])
+            }
         }
-        else if(array[x]!==null){
-            newArray.push(array[x]);
-        }
+        return newArray;
     }
+    return flattenArray(array,newArray)
 }
 
-console.log(flattenNestedArray([1,[[2],3,4,null],[[5]]]));
+console.log(flatten([1,[[2],3,4],[[5,6,[9]]]]));
 console.log("hello")

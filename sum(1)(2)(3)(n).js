@@ -8,4 +8,4 @@ let sum=function(a){
           
 }
 
-console.log(sum(1)(2)(3)());
+console.log(sum(1)());

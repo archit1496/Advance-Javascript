@@ -11,7 +11,7 @@ let printFullName=function(city,phoneno){
 
 Function.prototype.myBind=function(...args){
     let obj=this;
-    let parameters=args.splice(1);
+    let parameters=args.slice(1);
     return function(){
         obj.apply(args[0],parameters)
     }

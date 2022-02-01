@@ -1,19 +1,22 @@
-function flattenObject(data, parent) {
-  let keyString = parent + "_";
-  let flattenObject = {};
-  flattenNestedObject(data, keyString, flattenObject);
-  return flattenObject;
-}
-function flattenNestedObject(data, keyString, flattenObject) {
-  for (let [key, value] of Object.entries(data)) {
-    keyString += key + "_";
-    if (typeof value === "object") {
-      flattenNestedObject(value, keyString, flattenObject);
-    } else {
-      flattenObject[keyString.slice(0, keyString.length - 1)] = value;
-    }
-  }
-}
+let flattenObj={};
+function flatten(object,type){
+        for([key,value] of Object.entries(object))
+        {
+
+            if(typeof object[key]==='object')
+            {
+              
+                flatten(object[key],type+"_"+key)
+
+            } 
+            else
+            {
+              flattenObj[type+"_"+key]=value;
+            }
+              
+        }
+        return flattenObj;
+ }
 
 let user = {
   name: "Archit",
@@ -25,4 +28,4 @@ let user = {
   },
 };
 
-console.log(flattenObject(user, "user"));
+console.log(flatten(user, "user"));
